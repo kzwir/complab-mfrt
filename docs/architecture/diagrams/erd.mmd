@@ -1,1 +1,132 @@
+erDiagram
 
+    USERS {
+        uuid UserId PK
+        string FirstName
+        string LastName
+        string Email
+        string PasswordHash
+        string Role
+        boolean IsActive
+        datetime CreatedAt
+        datetime UpdatedAt
+    }
+
+    MIXTURES {
+        uuid MixtureId PK
+        string MixtureCode
+        decimal PolymerPercent
+        decimal QuartzitePercent
+        decimal Moisture
+        string Pigment
+        string Description
+        datetime CreatedAt
+        uuid CreatedBy
+    }
+
+    SAMPLES {
+        uuid SampleId PK
+        uuid MixtureId FK
+        string SampleNumber
+        string Status
+        date ProductionDate
+        string Description
+        datetime CreatedAt
+        uuid CreatedBy
+    }
+
+    TEST_SERIES {
+        uuid TestSeriesId PK
+        uuid SampleId FK
+        uuid OperatorId FK
+        string SeriesNumber
+        string Status
+        datetime CreatedAt
+        datetime ApprovedAt
+        uuid ApprovedBy
+    }
+
+    MFR_TESTS {
+        uuid MfrTestId PK
+        uuid TestSeriesId FK
+        decimal Temperature
+        decimal Load
+        decimal CuttingTime
+        decimal ExtrudateMass
+        decimal MfrValue
+        string Comments
+        datetime CreatedAt
+    }
+
+    STRENGTH_TESTS {
+        uuid StrengthTestId PK
+        uuid TestSeriesId FK
+        decimal BreakingForceP
+        decimal StrengthT
+        string Comments
+        datetime CreatedAt
+    }
+
+    STANDARDS {
+        uuid StandardId PK
+        string Code
+        string Name
+        string Version
+        datetime ValidFrom
+        datetime ValidTo
+        string Description
+    }
+
+    COMPLIANCE_RESULTS {
+        uuid ComplianceResultId PK
+        uuid TestSeriesId FK
+        uuid StandardId FK
+        string Result
+        string Remarks
+        datetime CreatedAt
+    }
+
+    REPORTS {
+        uuid ReportId PK
+        uuid TestSeriesId FK
+        uuid GeneratedBy FK
+        string FileName
+        string FilePath
+        string FileType
+        datetime GeneratedAt
+    }
+
+    AUDIT_LOG {
+        uuid AuditLogId PK
+        uuid UserId FK
+        string EntityName
+        uuid EntityId
+        string Action
+        string OldValue
+        string NewValue
+        string IPAddress
+        datetime CreatedAt
+    }
+
+    SYSTEM_SETTINGS {
+        uuid SettingId PK
+        string Key
+        string Value
+        string Description
+        datetime UpdatedAt
+    }
+
+    USERS ||--o{ TEST_SERIES : "tworzy"
+    USERS ||--o{ REPORTS : "generuje"
+    USERS ||--o{ AUDIT_LOG : "wykonuje"
+
+    MIXTURES ||--o{ SAMPLES : "zawiera"
+
+    SAMPLES ||--o{ TEST_SERIES : "uczestniczy"
+
+    TEST_SERIES ||--o{ MFR_TESTS : "zawiera"
+    TEST_SERIES ||--o{ STRENGTH_TESTS : "zawiera"
+    TEST_SERIES ||--o{ COMPLIANCE_RESULTS : "oceniane"
+    TEST_SERIES ||--o{ REPORTS : "generuje"
+
+    STANDARDS ||--o{ COMPLIANCE_RESULTS : "definiuje"
