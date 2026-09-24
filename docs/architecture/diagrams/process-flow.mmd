@@ -1,130 +1,129 @@
 flowchart TB
 
-    START([Rozpoczęcie procesu])
+START([Rozpoczęcie procesu])
 
-    MIXTURE["Utworzenie mieszaniny polimerowo-kwarcytowej"]
+MIXTURE["Utworzenie mieszaniny polimerowo-kwarcytowej"]
 
-    PARAMETERS["Wprowadzenie parametrów technologicznych"]
+PARAMETERS["Wprowadzenie parametrów technologicznych"]
 
-    SAMPLE["Rejestracja próbki"]
+SAMPLE["Rejestracja próbki"]
 
-    SERIES["Utworzenie serii badawczej"]
+SERIES["Utworzenie serii badawczej"]
 
-    DECISION{"Rodzaj badania"}
+DECISION{"Rodzaj badania"}
 
-    MFR["Badanie MFR/MFI"]
+MFR["Badanie MFR/MFI"]
 
-    STRENGTH["Badanie wytrzymałościowe"]
+STRENGTH["Badanie wytrzymałościowe"]
 
-    MFR_DATA["Rejestracja danych MFR: temperatura, obciążenie, masa wytłoczki, czas odcinania"]
+MFR_DATA["Rejestracja danych MFR"]
 
-    STRENGTH_DATA["Rejestracja danych wytrzymałościowych: siła niszcząca P (N), wytrzymałość T (MPa)"]
+STRENGTH_DATA["Rejestracja danych wytrzymałościowych"]
 
-    CALCULATIONS["Obliczenia statystyczne"]
+CALCULATIONS["Obliczenia statystyczne"]
 
-    AVG["Średnia"]
+AVG["Średnia"]
 
-    MINMAX["Minimum i maksimum"]
+MINMAX["Minimum i maksimum"]
 
-    STD["Odchylenie standardowe"]
+STD["Odchylenie standardowe"]
 
-    COMPLIANCE["Ocena zgodności"]
+COMPLIANCE["Ocena zgodności"]
 
-    STANDARD{"Wybór normy"}
+STANDARD{"Wybór normy"}
 
-    EN1338["PN-EN 1338"]
+EN1338["PN-EN 1338"]
 
-    EN1339["PN-EN 1339"]
+EN1339["PN-EN 1339"]
 
-    RESULT{"Czy wynik jest zgodny?"}
+RESULT{"Czy wynik jest zgodny"}
 
-    COMPLIANT["Status COMPLIANT"]
+COMPLIANT["Status COMPLIANT"]
 
-    NONCOMPLIANT["Status NON_COMPLIANT"]
+NONCOMPLIANT["Status NON_COMPLIANT"]
 
-    DASHBOARD["Wizualizacja danych i wykresy"]
+DASHBOARD["Wizualizacja danych i wykresy"]
 
-    REPORT{"Generować raport?"}
+REPORT{"Generować raport"}
 
-    PDF["Raport PDF"]
+PDF["Raport PDF"]
 
-    CSV["Eksport CSV"]
+CSV["Eksport CSV"]
 
-    XLSX["Eksport XLSX"]
+XLSX["Eksport XLSX"]
 
-    ARCHIVE["Archiwizacja wyników i serii badawczej"]
+ARCHIVE["Archiwizacja wyników i serii badawczej"]
 
-    AUDIT["Zapis do dziennika audytowego"]
+AUDIT["Zapis do dziennika audytowego"]
 
-    END([Zakończenie procesu])
+END([Zakończenie procesu])
 
-    START --> MIXTURE
+START --> MIXTURE
 
-    MIXTURE --> PARAMETERS
+MIXTURE --> PARAMETERS
 
-    PARAMETERS --> SAMPLE
+PARAMETERS --> SAMPLE
 
-    SAMPLE --> SERIES
+SAMPLE --> SERIES
 
-    SERIES --> DECISION
+SERIES --> DECISION
 
-    DECISION --> MFR
+DECISION --> MFR
 
-    DECISION --> STRENGTH
+DECISION --> STRENGTH
 
-    MFR --> MFR_DATA
+MFR --> MFR_DATA
 
-    STRENGTH --> STRENGTH_DATA
+STRENGTH --> STRENGTH_DATA
 
-    MFR_DATA --> CALCULATIONS
+MFR_DATA --> CALCULATIONS
 
-    STRENGTH_DATA --> CALCULATIONS
+STRENGTH_DATA --> CALCULATIONS
 
-    CALCULATIONS --> AVG
+CALCULATIONS --> AVG
 
-    CALCULATIONS --> MINMAX
+CALCULATIONS --> MINMAX
 
-    CALCULATIONS --> STD
+CALCULATIONS --> STD
 
-    AVG --> COMPLIANCE
+AVG --> COMPLIANCE
 
-    MINMAX --> COMPLIANCE
+MINMAX --> COMPLIANCE
 
-    STD --> COMPLIANCE
+STD --> COMPLIANCE
 
-    COMPLIANCE --> STANDARD
+COMPLIANCE --> STANDARD
 
-    STANDARD --> EN1338
+STANDARD --> EN1338
 
-    STANDARD --> EN1339
+STANDARD --> EN1339
 
-    EN1338 --> RESULT
+EN1338 --> RESULT
 
-    EN1339 --> RESULT
+EN1339 --> RESULT
 
-    RESULT --> COMPLIANT
+RESULT --> COMPLIANT
 
-    RESULT --> NONCOMPLIANT
+RESULT --> NONCOMPLIANT
 
-    COMPLIANT --> DASHBOARD
+COMPLIANT --> DASHBOARD
 
-    NONCOMPLIANT --> DASHBOARD
+NONCOMPLIANT --> DASHBOARD
 
-    DASHBOARD --> REPORT
+DASHBOARD --> REPORT
 
-    REPORT --> PDF
+REPORT --> PDF
 
-    REPORT --> CSV
+REPORT --> CSV
 
-    REPORT --> XLSX
+REPORT --> XLSX
 
-    PDF --> ARCHIVE
+PDF --> ARCHIVE
 
-    CSV --> ARCHIVE
+CSV --> ARCHIVE
 
-    XLSX --> ARCHIVE
+XLSX --> ARCHIVE
 
-    ARCHIVE --> AUDIT
+ARCHIVE --> AUDIT
 
-    AUDIT --> END
-``
+AUDIT --> END
