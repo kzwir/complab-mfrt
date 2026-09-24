@@ -1,1 +1,114 @@
+flowchart TB
 
+    START([Rozpoczęcie procesu])
+
+    MIXTURE[Utworzenie mieszaniny<br/>polimerowo-kwarcytowej]
+
+    PARAMETERS[Wprowadzenie parametrów<br/>technologicznych]
+
+    SAMPLE[Rejestracja próbki]
+
+    SERIES[Utworzenie serii badawczej]
+
+    DECISION{Rodzaj badania}
+
+    MFR[MFR/MFI<br/>Pomiar wskaźnika płynięcia]
+
+    STRENGTH[Badanie wytrzymałościowe<br/>Rozciąganie przy rozłupywaniu]
+
+    MFR_DATA[Rejestracja danych:<br/>Temperatura<br/>Obciążenie<br/>Masa wytłoczki<br/>Czas odcinania]
+
+    STRENGTH_DATA[Rejestracja danych:<br/>Siła niszcząca P [N]<br/>Wytrzymałość T [MPa]]
+
+    CALCULATIONS[Obliczenia statystyczne]
+
+    AVG[Średnia]
+
+    MINMAX[Minimum / Maksimum]
+
+    STD[Odchylenie standardowe]
+
+    COMPLIANCE[Ocena zgodności]
+
+    STANDARD{Norma}
+
+    EN1338[PN-EN 1338]
+
+    EN1339[PN-EN 1339]
+
+    RESULT{Wynik zgodny?}
+
+    COMPLIANT[Status COMPLIANT]
+
+    NONCOMPLIANT[Status NON_COMPLIANT]
+
+    DASHBOARD[Wizualizacja danych<br/>i wykresy]
+
+    REPORT{Generować raport?}
+
+    PDF[Raport PDF]
+
+    CSV[Eksport CSV]
+
+    XLSX[Eksport XLSX]
+
+    ARCHIVE[Archiwizacja wyników<br/>i serii badawczej]
+
+    AUDIT[Zapis do dziennika audytowego]
+
+    END([Zakończenie procesu])
+
+    START --> MIXTURE
+
+    MIXTURE --> PARAMETERS
+
+    PARAMETERS --> SAMPLE
+
+    SAMPLE --> SERIES
+
+    SERIES --> DECISION
+
+    DECISION --> MFR
+    DECISION --> STRENGTH
+
+    MFR --> MFR_DATA
+    STRENGTH --> STRENGTH_DATA
+
+    MFR_DATA --> CALCULATIONS
+    STRENGTH_DATA --> CALCULATIONS
+
+    CALCULATIONS --> AVG
+    CALCULATIONS --> MINMAX
+    CALCULATIONS --> STD
+
+    AVG --> COMPLIANCE
+    MINMAX --> COMPLIANCE
+    STD --> COMPLIANCE
+
+    COMPLIANCE --> STANDARD
+
+    STANDARD --> EN1338
+    STANDARD --> EN1339
+
+    EN1338 --> RESULT
+    EN1339 --> RESULT
+
+    RESULT --> COMPLIANT
+    RESULT --> NONCOMPLIANT
+
+    COMPLIANT --> DASHBOARD
+    NONCOMPLIANT --> DASHBOARD
+
+    DASHBOARD --> REPORT
+
+    REPORT --> PDF
+    REPORT --> CSV
+    REPORT --> XLSX
+
+    PDF --> ARCHIVE
+    CSV --> ARCHIVE
+    XLSX --> ARCHIVE
+
+    ARCHIVE --> AUDIT
+
+    AUDIT --> END
