@@ -1,0 +1,61 @@
+flowchart TB
+
+    USER1["Laborant"]
+    USER2["Kierownik Laboratorium"]
+    USER3["Administrator"]
+    USER4["Audytor"]
+
+    USER1 --> WEB
+    USER2 --> WEB
+    USER3 --> WEB
+    USER4 --> WEB
+
+    subgraph FRONTEND ["Frontend"]
+        WEB["Next.js + React + TypeScript"]
+    end
+
+    subgraph BACKEND ["Backend .NET 8"]
+
+        API["REST API"]
+
+        APP["Application Layer<br> CQRS + MediatR"]
+
+        DOMAIN["Domain Layer<br> DDD + Reguły biznesowe"]
+
+        INFRA["Infrastructure Layer"]
+
+        API --> APP
+        APP --> DOMAIN
+        APP --> INFRA
+
+    end
+
+    WEB --> API
+
+    subgraph REPORTING ["Raportowanie"]
+
+        REPORTS["QuestPDF<br>Eksport PDF<br>CSV<br>XLSX"]
+
+    end
+
+    subgraph STORAGE ["Magazyn danych"]
+
+        DB[("PostgreSQL 16")]
+
+        FILES[("Raporty i pliki")]
+
+        BACKUP[("Backup Storage")]
+
+    end
+
+    INFRA --> DB
+
+    INFRA --> FILES
+
+    INFRA --> REPORTS
+
+    REPORTS --> FILES
+
+    DB --> BACKUP
+
+    FILES --> BACKUP
