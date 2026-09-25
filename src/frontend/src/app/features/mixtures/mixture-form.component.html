@@ -1,0 +1,34 @@
+<div class="card">
+
+  <h2>Nowa mieszanina</h2>
+
+  <form [formGroup]="form">
+
+    <div class="form-group">
+      <label>Kod</label>
+      <input formControlName="code">
+    </div>
+
+    <div class="form-group">
+      <label>Polimer [%]</label>
+      <input
+        type="number"
+        formControlName="polymerPercent">
+    </div>
+
+    <div class="form-group">
+      <label>Kwarcyt [%]</label>
+      <input
+        type="number"
+        formControlName="quartzitePercent">
+    </div>
+
+    <button
+      type="button"
+      (click)="save()">
+      Zapisz
+    </button>
+
+  </form>
+
+</div>
