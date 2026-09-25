@@ -6,4 +6,3 @@ public static class TestType
 
     public const string Strength = "STRENGTH";
 }
-``
