@@ -1,0 +1,37 @@
+<div class="card">
+
+  <h2>Nowe badanie</h2>
+
+  <form [formGroup]="form">
+
+    <div class="form-group">
+      <label>ID próbki</label>
+      <input formControlName="sampleId">
+    </div>
+
+    <div class="form-group">
+      <label>Typ badania</label>
+
+      <select formControlName="testType">
+        <option value="MFR">MFR</option>
+        <option value="STRENGTH">STRENGTH</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Wynik</label>
+
+      <input
+        type="number"
+        formControlName="measurementValue">
+    </div>
+
+    <button
+      type="button"
+      (click)="save()">
+      Zapisz
+    </button>
+
+  </form>
+
+</div>
