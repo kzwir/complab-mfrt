@@ -1,0 +1,33 @@
+<div class="card">
+
+  <h2>Nowa próbka</h2>
+
+  <form [formGroup]="form">
+
+    <div class="form-group">
+      <label>ID mieszaniny</label>
+      <input formControlName="mixtureId">
+    </div>
+
+    <div class="form-group">
+      <label>Numer próbki</label>
+      <input formControlName="sampleNumber">
+    </div>
+
+    <div class="form-group">
+      <label>Data produkcji</label>
+      <input
+        type="date"
+        formControlName="productionDate">
+    </div>
+
+    <button
+      type="button"
+      (click)="save()">
+      Zapisz
+    </button>
+
+  </form>
+
+</div>
+``
