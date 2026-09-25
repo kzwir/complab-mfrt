@@ -7,4 +7,3 @@ import { Comp*nent } from '@angular/core';
 })
 export*class TestEditComponent {
 }
-```*
