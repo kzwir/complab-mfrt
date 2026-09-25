@@ -23,5 +23,8 @@ public sealed class CompLabDbContext : DbContext
         ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfigurationsFromAssembly(
+            typeof(CompLabDbContext).Assembly);
     }
 }
