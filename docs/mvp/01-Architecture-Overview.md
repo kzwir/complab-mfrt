@@ -239,6 +239,43 @@ PostgreSQL
 
 ---
 
+# 6.1 Architektura MVP
+
+# Architektura MVP
+
+Wersja MVP została zaprojektowana jako klasyczna aplikacja trójwarstwowa z wyraźnym podziałem na:
+
+1. Frontend
+   - Angular
+   - ngx-admin
+   - Nebular
+
+2. Backend
+   - ASP.NET Core 8
+   - Entity Framework Core
+
+3. Baza danych
+   - PostgreSQL
+
+Komunikacja:
+
+```mermaid
+flowchart TB
+
+    USER[Użytkownik]
+
+    FE[Frontend<br/>Angular]
+
+    BE[Backend<br/>ASP.NET Core API]
+
+    DATABASE[(PostgreSQL)]
+
+    USER --> FE
+    FE -->|HTTPS<br/>REST / JSON| BE
+    BE -->|Entity Framework Core| DATABASE
+```
+
+
 # 7. Architektura fizyczna
 
 ```text
